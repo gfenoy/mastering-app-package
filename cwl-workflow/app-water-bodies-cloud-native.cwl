@@ -1,4 +1,4 @@
-cwlVersion: v1.2
+cwlVersion: v1.0
 $namespaces:
   s: https://schema.org/
 s:softwareVersion: 1.4.1
@@ -12,6 +12,8 @@ $graph:
     requirements:
       - class: ScatterFeatureRequirement
       - class: SubworkflowFeatureRequirement
+      - class: NetworkAccess
+        networkAccess: true
     inputs:
       aoi:
         label: area of interest
@@ -32,7 +34,7 @@ $graph:
         type: string[]
         default: ["green", "nir"]
     outputs:
-      - id: stac_catalog
+      - id: stac
         outputSource:
           - node_stac/stac_catalog
         type: Directory
@@ -118,11 +120,9 @@ $graph:
       ResourceRequirement:
         coresMax: 1
         ramMax: 512
-      NetworkAccess:
-        networkAccess: true
     hints:
       DockerRequirement:
-        dockerPull: localhost/crop:latest
+        dockerPull: ghcr.io/terradue/ogc-eo-application-package-hands-on/crop:1.5.0
     baseCommand: ["python", "-m", "app"]
     arguments: []
     inputs:
@@ -158,11 +158,9 @@ $graph:
       ResourceRequirement:
         coresMax: 1
         ramMax: 1024
-      NetworkAccess:
-        networkAccess: false
     hints:
       DockerRequirement:
-        dockerPull: localhost/norm-diff:latest
+        dockerPull: ghcr.io/terradue/ogc-eo-application-package-hands-on/norm_diff:1.5.0
     baseCommand: ["python", "-m", "app"]
     arguments: []
     inputs:
@@ -186,11 +184,9 @@ $graph:
       ResourceRequirement:
         coresMax: 1
         ramMax: 1024
-      NetworkAccess:
-        networkAccess: false
     hints:
       DockerRequirement:
-        dockerPull: localhost/otsu:latest
+        dockerPull: ghcr.io/terradue/ogc-eo-application-package-hands-on/otsu:1.5.0
     baseCommand: ["python", "-m", "app"]
     arguments: []
     inputs:
@@ -214,11 +210,9 @@ $graph:
       ResourceRequirement:
         coresMax: 1
         ramMax: 512
-      NetworkAccess:
-        networkAccess: true
     hints:
       DockerRequirement:
-        dockerPull: localhost/stac:latest
+        dockerPull: ghcr.io/terradue/ogc-eo-application-package-hands-on/stac:1.5.0
     baseCommand: ["python", "-m", "app"]
     arguments: []
     inputs:
