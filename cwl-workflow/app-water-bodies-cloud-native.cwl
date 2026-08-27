@@ -157,7 +157,7 @@ $graph:
           PYTHONPATH: /app
       ResourceRequirement:
         coresMax: 1
-        ramMax: 512
+        ramMax: 1024
       NetworkAccess:
         networkAccess: false
     hints:
@@ -185,7 +185,7 @@ $graph:
           PYTHONPATH: /app
       ResourceRequirement:
         coresMax: 1
-        ramMax: 512
+        ramMax: 1024
       NetworkAccess:
         networkAccess: false
     hints:
